@@ -32,7 +32,7 @@ object pepita {
 	method teEncontro(alguien){
 		if(alguien.comidaGuardada() != null){
 			self.come(alguien.comidaGuardada())
-			game.addVisual(alguien.comidaGuardada())
+			game.addVisualIn(alguien.comidaGuardada(), game.at(0.randomUpTo(9),0.randomUpTo(9)))
 			alguien.comidaGuardada(null)
 		}
 	}

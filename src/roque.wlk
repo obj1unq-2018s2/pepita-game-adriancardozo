@@ -5,7 +5,7 @@ object roque {
 	method imagen() = "jugador.png"
 	method levantarYGuardar(comida){
 		if(comidaGuardada != null){
-			game.addVisual(comidaGuardada)
+			game.addVisualIn(comidaGuardada, game.at(posicion.up(1).x(),posicion.up(1).y() % 10))
 		}
 		comidaGuardada = comida
 		game.removeVisual(comida)
