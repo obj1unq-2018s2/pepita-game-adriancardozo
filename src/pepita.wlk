@@ -30,17 +30,24 @@ object pepita {
 	}
 	
 	method teEncontro(alguien){
+		// TODO Acá estás tomando muchas responsabilidades de roque.
+		// Probá delegarle este comportamiento a roque y fijate cómo cambia.
 		if(alguien.comidaGuardada() != null){
 			self.come(alguien.comidaGuardada())
+			// TODO Hubiera sido bueno extraer el comportamiento para crear una posición random en un método/objeto aparte.
 			game.addVisualIn(alguien.comidaGuardada(), game.at(0.randomUpTo(9),0.randomUpTo(9)))
 			alguien.comidaGuardada(null)
 		}
+	}
+	
+	method pepe() {
 	}
 	
 	method volaHacia(unaCiudad) {
 		if(ciudad == unaCiudad){
 			game.say(self,"Ya estoy en " + ciudad.nombre())
 		}
+		// TODO Podrías repetir menos código si "energiaParaVolar" recibiera directamente una posición en lugar de una distancia.
 		else if(self.energiaParaVolar(posicion.distance(unaCiudad.posicion())) > energia){
 			game.say(self,"Dame de comer primero !")
 		}
@@ -53,6 +60,7 @@ object pepita {
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 
 	method move(nuevaPosicion) {
+		// TODO Podrías repetir menos código si "energiaParaVolar" recibiera directamente una posición en lugar de una distancia.
 		energia -= self.energiaParaVolar(posicion.distance(nuevaPosicion))
 		self.posicion(nuevaPosicion)
 	}	
